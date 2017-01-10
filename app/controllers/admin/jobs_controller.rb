@@ -37,9 +37,21 @@ class Admin::JobsController < ApplicationController
   end
 
   def destroy
-    @job = Job.find(parmas[:id])
+    @job = Job.find(params[:id])
     @job.destroy
-    redirect_to admin_jobs_path, alert: "Job Deleted"
+    redirect_to admin_jobs_path, method: :delete, alert: "Job Deleted"
+  end
+
+  def publish
+    @job = Job.find(params[:id])
+    @job.publish!
+    redirect_to :back
+  end
+
+  def hide
+    @job = Job.find(params[:id])
+    @job.hide!
+    redirect_to :back
   end
 
   private
