@@ -13,6 +13,10 @@ class Admin::JobsController < ApplicationController
     @job = Job.new
   end
 
+  def edit
+    @job = Job.find(params[:id])
+  end
+
   def create
     @job = Job.new(job_params)
     if @job.save
@@ -39,7 +43,7 @@ class Admin::JobsController < ApplicationController
 
   private
   def job_params
-    params.require(:job).permit(:title, :description)
+    params.require(:job).permit(:title, :description, :wage_lower_bound, :wage_upper_bound, :contact_email)
   end
 
   def require_is_admin
