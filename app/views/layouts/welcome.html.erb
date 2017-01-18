@@ -6,9 +6,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheets" type="text/css" href="welcome.scss">
   </head>
 
   <body>
+    <div class="row">
+      <%= render "common/navbar" %>
       <%= yield %>
+    </div>
   </body>
 </html>

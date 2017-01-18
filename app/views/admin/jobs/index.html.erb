@@ -1,20 +1,28 @@
-<div class="pull-right">
-  <%= link_to("Add a job", new_admin_job_path, class: "btn btn-default") %>
-</div>
-<table class="table table-boldered">
+<table class="table custab">
+  <caption> 已添加职位一览 </caption>
+  <thead>
+    <tr>
+      <th> 显示状态 </th>
+      <th> 职位名称 </th>
+      <th> 操作 </th>
+      <th> 发布时间 </th>
+    </thead>
+    <tbody>
   <% @jobs.each do |job| %>
     <tr>
       <td>
         <%= render_job_status(job) %>
+      </td>
+      <td>
         <%= link_to(job.title, admin_job_path(job)) %>
       </td>
       <td>
-        <%= link_to("Edit", edit_admin_job_path(job)) %> |
-        <%= link_to("Destroy", admin_job_path(job), method: :delete, data: {confirm: "Are you sure?"}) %>
+        <%= link_to edit_admin_job_path(job), class: "btn btn-xs btn-info" do %><i class="fa fa-pencil"></i><% end %>
+        <%= link_to admin_job_path(job), :method => :delete, :class => "btn btn-xs  btn-danger", :data => { :confirm => "Are you sure?" } do %><i class="fa fa-trash-o"></i><% end %>
         <% if job.is_hidden %>
-          <%= link_to("Publish", publish_admin_job_path(job), method: :post, class: "btn btn-xs btn-default") %>
+          <%= link_to publish_admin_job_path(job) , :method => :post, :class => "btn btn-xs btn-success" do %><i class="fa fa-eye"></i><% end %>
         <% else %>
-          <%= link_to("Hide", hide_admin_job_path(job), method: :post, class: "btn btn-xs btn-default") %>
+          <%= link_to hide_admin_job_path(job), :method => :post,  :class => "btn btn-xs btn-warning" do %><i class="fa fa-eye-slash"></i><% end %>
         <% end %>
       </td>
       <td>
@@ -22,4 +30,5 @@
       </td>
     </tr>
   <% end %>
+</tbody>
 </table>
