@@ -13,7 +13,9 @@
       <div class="row">
       <%= render "common/navbar" %>
      </div>
-      <%= render "common/flashes" %>
+     <div class="alert">
+       <%= render "common/flashes" %>
+     </div>
       <%= yield %>
     </div>
     <%= render "common/footer" %>

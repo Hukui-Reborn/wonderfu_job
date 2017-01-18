@@ -12,8 +12,8 @@
       <ul class="nav navbar-nav navbar-right">
           <li>
             <% if !current_user %>
-              <li><a href="/jobs">找工作</a></li>
-              <li><a href="/admin/jobs">聘人才</a></li>
+              <li> <a href="/jobs">找工作</a> </li>
+              <li> <%= link_to("聘人才", admin_jobs_path) %> </li>
               <li> <%= link_to("注册", new_user_registration_path) %> </li>
               <li> <%= link_to("登入", new_user_session_path) %> </li>
             <% else %>
@@ -23,13 +23,16 @@
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <% if current_user.is_admin? %>
-                  <li> <%= link_to("Admin Panel", admin_jobs_path) %> </li>
+                  <% if current_user.admin? %>
+                      <li> <%= link_to("Admin Panel", admin_jobs_path) %> </li>
                   <% end %>
-                  <li> <%= link_to("登出", destroy_user_session_path, method: :delete) %> </li>
+                      <li> <%= link_to("登出", destroy_user_session_path, method: :delete) %> </li>
                 </ul>
               </li>
-              <li> <%= link_to("发布职位", new_admin_job_path) %> </li>
+              <% if current_user.admin? %>
+                <li> <%= link_to("发布职位", new_admin_job_path) %> </li>
+              <% end %>
+
             <% end %>
           </li>
         </ul>

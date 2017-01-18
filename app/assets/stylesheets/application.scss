@@ -63,11 +63,6 @@
      padding-top: 15px;
  }
 // job index css
-table.top {
-    margin-top: 60px;
-    border-collapse: collapse;
-    width: 100%;
-}
 
 th {
     text-align: center;
@@ -91,4 +86,7 @@ caption {
   margin: 5% 0;
   box-shadow: 3px 3px 2px #ccc;
   transition: 0.5s;
+}
+.alert{
+  margin-top: 25px;
 }
